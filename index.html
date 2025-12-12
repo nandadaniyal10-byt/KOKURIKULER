@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batik Explorer - Petualangan dalam Motif Batik Indonesia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Prata&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-tshirt"></i>
+                <span>Batik<span class="logo-highlight">Explorer</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active"><i class="fas fa-home"></i> Beranda</a>
+                <a href="#explore" class="nav-link"><i class="fas fa-compass"></i> Jelajahi</a>
+                <a href="#types" class="nav-link"><i class="fas fa-layer-group"></i> Jenis Batik</a>
+                <a href="#technique" class="nav-link"><i class="fas fa-paint-brush"></i> Teknik</a>
+                <a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> Tentang</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Temukan <span class="hero-highlight">Keajaiban</span> Batik Nusantara</h1>
+            <p class="hero-subtitle">Setiap motif memiliki cerita, setiap pola menyimpan makna. Jelajahi kekayaan budaya Indonesia melalui motif batik dari seluruh penjuru tanah air.</p>
+            <div class="hero-search">
+                <input type="text" placeholder="Cari motif batik favoritmu..." class="search-input" id="searchInput">
+                <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i> Jelajahi</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>34 Provinsi</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-palette"></i>
+                    <span>100+ Motif</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-history"></i>
+                    <span>Abad ke-4</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-award"></i>
+                    <span>Warisan UNESCO</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Quick Filters -->
+    <section class="quick-filters">
+        <h2 class="section-title">Jelajahi Berdasarkan</h2>
+        <p class="section-subtitle">Temukan batik berdasarkan kategori, daerah, atau motif favorit Anda</p>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-th-large"></i> Semua
+            </button>
+            <button class="filter-btn" data-filter="jawa">
+                <i class="fas fa-mountain"></i> Jawa
+            </button>
+            <button class="filter-btn" data-filter="sumatera">
+                <i class="fas fa-leaf"></i> Sumatera
+            </button>
+            <button class="filter-btn" data-filter="bali">
+                <i class="fas fa-umbrella-beach"></i> Bali & NTT
+            </button>
+            <button class="filter-btn" data-filter="kalimantan">
+                <i class="fas fa-tree"></i> Kalimantan
+            </button>
+            <button class="filter-btn" data-filter="sulawesi">
+                <i class="fas fa-water"></i> Sulawesi
+            </button>
+            <button class="filter-btn" data-filter="geometris">
+                <i class="fas fa-shapes"></i> Geometris
+            </button>
+            <button class="filter-btn" data-filter="alam">
+                <i class="fas fa-feather-alt"></i> Alam
+            </button>
+            <button class="filter-btn" data-filter="keraton">
+                <i class="fas fa-crown"></i> Keraton
+            </button>
+        </div>
+    </section>
+
+    <!-- Featured Batik -->
+    <section class="featured-section" id="explore">
+        <div class="container">
+            <h2 class="section-title">Koleksi <span class="highlight">Batik Nusantara</span></h2>
+            <p class="section-subtitle">Motif batik terpopuler dari berbagai daerah Indonesia dengan makna filosofis mendalam</p>
+            
+            <div class="featured-grid" id="featuredGrid">
+                <!-- Cards will be inserted here by JavaScript -->
+            </div>
+            
+            <div class="load-more-container">
+                <button class="load-more-btn" id="loadMoreBtn">
+                    <i class="fas fa-plus-circle"></i> Tampilkan Lebih Banyak
+                </button>
+                <div class="total-count">
+                    <i class="fas fa-tshirt"></i>
+                    <span>Menampilkan: <strong id="totalBatikCount">8</strong> dari <strong id="totalBatikAll">20</strong> motif batik</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Batik Types Section -->
+    <section class="types-section" id="types">
+        <div class="container">
+            <h2 class="section-title">Jenis-Jenis <span class="highlight">Batik</span></h2>
+            <p class="section-subtitle">Kenali perbedaan berbagai jenis batik berdasarkan teknik pembuatan dan daerah asal</p>
+            
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-pen-nib"></i>
+                    </div>
+                    <h3>Batik Tulis</h3>
+                    <p>Dibuat secara manual dengan tangan menggunakan canting. Proses membutuhkan ketelitian tinggi dan waktu 2-3 bulan per kain.</p>
+                    <ul class="type-features">
+                        <li><i class="fas fa-check"></i> Nilai seni tinggi</li>
+                        <li><i class="fas fa-check"></i> Harga mahal</li>
+                        <li><i class="fas fa-check"></i> Motif unik</li>
+                    </ul>
+                </div>
+                
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-stamp"></i>
+                    </div>
+                    <h3>Batik Cap</h3>
+                    <p>Menggunakan cap tembaga untuk mencetak motif. Lebih cepat produksinya, dapat menghasilkan banyak kain dalam waktu singkat.</p>
+                    <ul class="type-features">
+                        <li><i class="fas fa-check"></i> Harga terjangkau</li>
+                        <li><i class="fas fa-check"></i> Produksi cepat</li>
+                        <li><i class="fas fa-check"></i> Motif berulang</li>
+                    </ul>
+                </div>
+                
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    <h3>Batik Printing</h3>
+                    <p>Dicetak dengan mesin modern. Motif lebih presisi dan warna lebih cerah. Diproduksi massal untuk kebutuhan komersial.</p>
+                    <ul class="type-features">
+                        <li><i class="fas fa-check"></i> Harga murah</li>
+                        <li><i class="fas fa-check"></i> Warna cerah</li>
+                        <li><i class="fas fa-check"></i> Tersedia banyak</li>
+                    </ul>
+                </div>
+                
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Batik Lukis</h3>
+                    <p>Motif dilukis langsung di atas kain dengan kuas. Setiap karya unik dan bernilai seni sangat tinggi seperti lukisan.</p>
+                    <ul class="type-features">
+                        <li><i class="fas fa-check"></i> Karya seni unik</li>
+                        <li><i class="fas fa-check"></i> Nilai koleksi</li>
+                        <li><i class="fas fa-check"></i> Ekspresi bebas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technique Section -->
+    <section class="technique-section" id="technique">
+        <div class="container">
+            <h2 class="section-title">Proses <span class="highlight">Pembuatan</span> Batik</h2>
+            <p class="section-subtitle">Mengenal tahapan tradisional pembuatan batik tulis yang membutuhkan kesabaran dan ketelitian</p>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-ruler-combined"></i> Persiapan Kain</h3>
+                        <p>Kain mori dicuci dan diputihkan untuk menghilangkan kanji. Kemudian dikanji lagi agar mudah menyerap lilin.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-pen-nib"></i> Membuat Pola</h3>
+                        <p>Pola digambar di atas kain dengan pensil atau arang. Ini adalah cetak biru motif batik yang akan dibuat.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-fire"></i> Mencanting</h3>
+                        <p>Lilin panas diambil dengan canting, kemudian ditorehkan mengikuti pola. Membutuhkan ketelitian tinggi.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-fill-drip"></i> Pewarnaan</h3>
+                        <p>Kain dicelup ke dalam warna pertama. Bagian yang tertutup lilin tidak akan terkena warna.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-temperature-high"></i> Pelorodan</h3>
+                        <p>Lilin dilepas dengan cara merebus kain dalam air mendidih. Proses ini bisa diulang untuk warna berikutnya.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-check-circle"></i> Finishing</h3>
+                        <p>Kain dicuci bersih, dijemur, dan disetrika. Batik siap digunakan atau dijual.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tools-section">
+                <h3>Alat-alat Membatik Tradisional</h3>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-pen-fancy"></i>
+                        </div>
+                        <h4>Canting</h4>
+                        <p>Alat untuk menorehkan lilin panas ke kain. Terbuat dari tembaga dengan gagang bambu.</p>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h4>Wajan</h4>
+                        <p>Panci kecil untuk memanaskan lilin malam. Biasanya terbuat dari besi atau tanah liat.</p>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h4>Anglo</h4>
+                        <p>Kompor tradisional dari tanah liat untuk memanaskan lilin. Menggunakan arang sebagai bahan bakar.</p>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-weight-hanging"></i>
+                        </div>
+                        <h4>Gawangan</h4>
+                        <p>Penyangga kayu atau bambu untuk membentangkan kain saat proses pembatikan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Peta <span class="highlight">Persebaran</span> Batik</h2>
+            <p class="section-subtitle">Klik titik di peta untuk melihat batik dari daerah tersebut</p>
+            
+            <div class="map-container">
+                <div class="map" id="indonesiaMap">
+                    <!-- Java Region -->
+                    <div class="map-point" style="top: 60%; left: 30%;" data-region="jawa">
+                        <div class="point"></div>
+                        <div class="point-info">
+                            <h4>Pulau Jawa</h4>
+                            <p>45 Motif Batik</p>
+                            <small>Yogyakarta, Solo, Cirebon, Pekalongan</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Sumatra Region -->
+                    <div class="map-point" style="top: 40%; left: 15%;" data-region="sumatera">
+                        <div class="point"></div>
+                        <div class="point-info">
+                            <h4>Pulau Sumatera</h4>
+                            <p>28 Motif Batik</p>
+                            <small>Riau, Palembang, Medan, Padang</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Bali Region -->
+                    <div class="map-point" style="top: 70%; left: 80%;" data-region="bali">
+                        <div class="point"></div>
+                        <div class="point-info">
+                            <h4>Bali & Nusa Tenggara</h4>
+                            <p>34 Motif Batik</p>
+                            <small>Bali, Lombok, Flores, Sumba</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Kalimantan Region -->
+                    <div class="map-point" style="top: 35%; left: 60%;" data-region="kalimantan">
+                        <div class="point"></div>
+                        <div class="point-info">
+                            <h4>Pulau Kalimantan</h4>
+                            <p>15 Motif Batik</p>
+                            <small>Pontianak, Banjarmasin, Samarinda</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Sulawesi Region -->
+                    <div class="map-point" style="top: 55%; left: 75%;" data-region="sulawesi">
+                        <div class="point"></div>
+                        <div class="point-info">
+                            <h4>Pulau Sulawesi</h4>
+                            <p>18 Motif Batik</p>
+                            <small>Makassar, Manado, Toraja, Gorontalo</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="region-stats">
+                <div class="stat-item">
+                    <div class="stat-icon" style="background: #D4AF37;">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="stat-text">
+                        <h4>6 Pulau Besar</h4>
+                        <p>Memiliki motif batik khas</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon" style="background: #8B4513;">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="stat-text">
+                        <h4>140+ Motif</h4>
+                        <p>Tersebar di seluruh Indonesia</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon" style="background: #2C1810;">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <div class="stat-text">
+                        <h4>1600+ Tahun</h4>
+                        <p>Warisan budaya yang dilestarikan</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon" style="background: #228B22;">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="stat-text">
+                        <h4>UNESCO 2009</h4>
+                        <p>Diakui sebagai warisan dunia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Batik Gallery -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Galeri <span class="highlight">Batik</span> dalam Kehidupan</h2>
+            <div class="gallery-controls">
+                <button class="gallery-nav prev"><i class="fas fa-chevron-left"></i></button>
+                <div class="gallery-indicator">
+                    <span class="active"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <button class="gallery-nav next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item active">
+                    <img src="images/6bde994f06fbe9e4ce3f2d5f6b67ea0c.jpg" alt="Proses Membatik">
+                    <div class="gallery-info">
+                        <h3>Proses Membatik Tradisional</h3>
+                        <p>Seni membatik telah ada sejak lebih dari 2.000 tahun lalu, membutuhkan kesabaran dan ketelitian tinggi</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/d3e9fe73ce42ff15d84a02fd4e9af135.jpg" alt="Batik Fashion">
+                    <div class="gallery-info">
+                        <h3>Batik dalam Fashion Modern</h3>
+                        <p>Batik tidak hanya untuk acara formal, tapi juga bisa stylish dalam kehidupan sehari-hari</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/a48d27983dc656d280da67422b28b09b.jpg" alt="Variasi Motif">
+                    <div class="gallery-info">
+                        <h3>Keanekaragaman Motif</h3>
+                        <p>Indonesia memiliki ribuan jenis batik dengan makna filosofis yang mendalam</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/04903124c21750dd6444aa23ab73f4eb.jpg" alt="Batik International">
+                    <div class="gallery-info">
+                        <h3>Batik Go International</h3>
+                        <p>Batik telah dikenal dunia dan dipamerkan di berbagai fashion show internasional</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Kenapa <span class="highlight">Batik</span> Istimewa?</h2>
+                    <p>Batik bukan sekadar kain. Ia adalah kanvas yang menceritakan perjalanan bangsa, nilai-nilai luhur, dan kearifan lokal yang telah diwariskan turun-temurun. Setiap goresan lilin mengandung doa, setiap warna menyimpan harapan.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-university"></i>
+                            <h4>Warisan UNESCO</h4>
+                            <p>Diakui sebagai Masterpiece of Oral and Intangible Heritage of Humanity sejak 2009</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-brain"></i>
+                            <h4>Filosofi Mendalam</h4>
+                            <p>Setiap motif mengandung pesan kehidupan, petuah bijak, dan harapan</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-hands-helping"></i>
+                            <h4>Seni Kolaboratif</h4>
+                            <p>Hasil karya bersama perajin, seniman, dan alam dalam harmoni</p>
+                        </div>
+                    </div>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <h3>2 Oktober</h3>
+                            <p>Hari Batik Nasional</p>
+                        </div>
+                        <div class="about-stat">
+                            <h3>200.000+</h3>
+                            <p>Perajin Batik</p>
+                        </div>
+                        <div class="about-stat">
+                            <h3>Rp 3,8 T</h3>
+                            <p>Nilai Ekspor/Tahun</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="images/04903124c21750dd6444aa23ab73f4eb.jpg" alt="Proses Membatik">
+                    <div class="image-caption">
+                        <i class="fas fa-quote-left"></i>
+                        <p>Batik adalah jiwa Indonesia yang terwujud dalam kain</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-tshirt"></i>
+                    <span>Batik<span class="logo-highlight">Explorer</span></span>
+                    <p>Melestarikan warisan, merayakan keindahan, menginspirasi generasi.</p>
+                    <div class="footer-newsletter">
+                        <input type="email" placeholder="Email Anda" id="newsletterInput">
+                        <button id="newsletterBtn"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Navigasi</h3>
+                    <a href="#home"><i class="fas fa-chevron-right"></i> Beranda</a>
+                    <a href="#explore"><i class="fas fa-chevron-right"></i> Jelajahi Batik</a>
+                    <a href="#types"><i class="fas fa-chevron-right"></i> Jenis Batik</a>
+                    <a href="#technique"><i class="fas fa-chevron-right"></i> Teknik Membatik</a>
+                    <a href="#about"><i class="fas fa-chevron-right"></i> Tentang Kami</a>
+                </div>
+                <div class="footer-links">
+                    <h3>Daerah Batik</h3>
+                    <a href="#" data-filter="jawa"><i class="fas fa-map-marker-alt"></i> Jawa</a>
+                    <a href="#" data-filter="sumatera"><i class="fas fa-map-marker-alt"></i> Sumatera</a>
+                    <a href="#" data-filter="bali"><i class="fas fa-map-marker-alt"></i> Bali & NTT</a>
+                    <a href="#" data-filter="kalimantan"><i class="fas fa-map-marker-alt"></i> Kalimantan</a>
+                    <a href="#" data-filter="sulawesi"><i class="fas fa-map-marker-alt"></i> Sulawesi</a>
+                </div>
+                <div class="footer-social">
+                    <h3>Terhubung</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                    <p>Proyek Edukasi Seni Rupa & Budaya Indonesia</p>
+                    <p class="creator">Dibuat dengan ❤️ oleh Siswa SMA</p>
+                    <p class="copyright">© <span id="currentYear">2024</span> Batik Explorer</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Website ini dibuat untuk tujuan edukasi dan pelestarian budaya Indonesia. Semua gambar dan konten digunakan untuk tujuan pendidikan.</p>
+                <div class="footer-badges">
+                    <span class="badge"><i class="fas fa-graduation-cap"></i> Edukasi</span>
+                    <span class="badge"><i class="fas fa-heart"></i> Budaya</span>
+                    <span class="badge"><i class="fas fa-users"></i> Komunitas</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quiz Floating Button -->
+    <button class="quiz-floating-btn" id="quizFloatingBtn">
+        <i class="fas fa-brain"></i>
+        <span class="quiz-badge">QUIZ</span>
+        <div class="quiz-tooltip">Uji Pengetahuan Batikmu!</div>
+    </button>
+
+    <!-- Quiz Modal -->
+    <div class="quiz-modal" id="quizModal">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <div class="quiz-title">
+                    <i class="fas fa-brain"></i>
+                    <h2>Quiz Batik Explorer</h2>
+                </div>
+                <div class="quiz-timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer">00:00</span>
+                </div>
+                <button class="quiz-close" id="quizClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="quiz-content" id="quizContent">
+                <!-- Konten quiz akan dimuat di sini -->
+            </div>
+            
+            <div class="quiz-footer">
+                <div class="quiz-progress">
+                    <div class="progress-info">
+                        <span id="currentQuestionNum">1</span> / <span id="totalQuestions">10</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                <div class="quiz-controls">
+                    <button class="quiz-nav-btn prev-btn" id="prevBtn" disabled>
+                        <i class="fas fa-arrow-left"></i> Sebelumnya
+                    </button>
+                    <div class="quiz-score">
+                        <i class="fas fa-star"></i>
+                        <span>Skor: <strong id="currentScore">0</strong></span>
+                    </div>
+                    <button class="quiz-nav-btn next-btn" id="nextBtn">
+                        Selanjutnya <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="results-modal" id="resultsModal">
+        <div class="results-container">
+            <div class="results-header">
+                <div class="trophy-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h2>Hasil Quiz Anda!</h2>
+                <p class="results-subtitle">Selamat! Anda telah menyelesaikan quiz Batik Explorer</p>
+            </div>
+            
+            <div class="results-body">
+                <div class="score-display">
+                    <div class="score-circle">
+                        <svg width="150" height="150" viewBox="0 0 150 150">
+                            <circle class="score-circle-bg" cx="75" cy="75" r="70"></circle>
+                            <circle class="score-circle-progress" cx="75" cy="75" r="70" 
+                                    stroke-dasharray="439.8" stroke-dashoffset="439.8"></circle>
+                        </svg>
+                        <div class="score-text">
+                            <span id="finalScore">0</span>
+                            <small>POIN</small>
+                        </div>
+                    </div>
+                    
+                    <div class="score-details">
+                        <div class="result-title" id="resultTitle">Pemula Batik</div>
+                        <p class="result-description" id="resultDescription">
+                            Anda baru mulai belajar tentang batik. Terus eksplorasi dan pelajari lebih dalam!
+                        </p>
+                        
+                        <div class="results-stats">
+                            <div class="stat-item correct">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <div class="stat-value" id="correctAnswers">0</div>
+                                    <div class="stat-label">Jawaban Benar</div>
+                                </div>
+                            </div>
+                            <div class="stat-item wrong">
+                                <i class="fas fa-times-circle"></i>
+                                <div>
+                                    <div class="stat-value" id="wrongAnswers">0</div>
+                                    <div class="stat-label">Jawaban Salah</div>
+                                </div>
+                            </div>
+                            <div class="stat-item time">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <div class="stat-value" id="quizTime">0s</div>
+                                    <div class="stat-label">Waktu</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="results-actions">
+                    <button class="action-btn share-btn" id="shareResults">
+                        <i class="fas fa-share-alt"></i> Bagikan Hasil
+                    </button>
+                    <button class="action-btn restart-btn" id="restartQuiz">
+                        <i class="fas fa-redo"></i> Main Lagi
+                    </button>
+                    <button class="action-btn close-btn" id="closeResults">
+                        <i class="fas fa-times"></i> Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Batik Detail -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
